@@ -17,7 +17,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-
 @app.route("/base")
 def base():
     return render_template('base.html')
@@ -35,11 +34,10 @@ def index():
 
     snacks_data = []
     with open("data/snacks-recipe.json", "r") as json_data:
+
         snacks_data = json.load(json_data)
 
-
     return render_template("index.html", breakfast_recipe=breakfast_data, snacks_recipe=snacks_data, lunch_recipe=lunch_data)
-
 
 
 @app.route("/recipes")
@@ -57,7 +55,6 @@ def recipes():
         snacks_data = json.load(json_data)
 
     return render_template("recipes.html", breakfast_recipe=breakfast_data, snacks_recipe=snacks_data, lunch_recipe=lunch_data)
-
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -99,7 +96,8 @@ def login():
                 return redirect(url_for("profile", username=session["user"]))
             else:
                 # invalid password hash
-                flash("The username or password you have entered does not match our records. Please double-check and try again.")
+                flash(
+                    "The username or password you have entered does not match our records. Please double-check and try again.")
                 return redirect(url_for("login"))
         else:
             # username doesn't exist
@@ -114,7 +112,7 @@ def profile(username):
     # retrieve the session user's username from database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    
+
     if session["user"]:
         return render_template("profile.html", username=username)
 
@@ -139,7 +137,7 @@ def create_recipes():
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "recipe_cooking_instructions": request.form.get("recipe_cooking_instructions"),
             "created_by": session["user"]
-            }
+        }
         mongo.db.recipes.insert_one(recipe)
         flash("Your new recipe is added")
         return redirect(url_for("my_recipes"))
@@ -147,7 +145,7 @@ def create_recipes():
     return render_template("create_recipes.html")
 
 
-#edit recipe
+# edit recipe
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
@@ -165,7 +163,9 @@ def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("edit_recipe.html", recipe=recipe)
 
-#delete recipe from database
+# delete recipe from database
+
+
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
@@ -173,9 +173,11 @@ def delete_recipe(recipe_id):
     return redirect(url_for("my_recipes"))
 
 # display user recipes from mongodb
+
+
 @app.route("/my_recipes")
 def my_recipes():
-    recipe=mongo.db.recipes.find()
+    recipe = mongo.db.recipes.find()
     return render_template("my_recipes.html", recipe=recipe)
 
 
@@ -183,5 +185,3 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
-
-
