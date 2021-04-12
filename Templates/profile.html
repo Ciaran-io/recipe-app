@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- profile container -->
+<div class="container px-4 pt-4 mx-auto bg-primary-teal ">
+
+  <div class="flex items-center justify-between ">
+
+    <!-- section for user login message -->
+    {% with messages= get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <div>
+      <h1 class="capitalize ">
+        {{ message }}
+      </h1>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <!-- profile placeholder image -->
+    <div class="flex flex-col content-center text-center">
+      <img
+        class="w-16 h-auto rounded-full "
+        src="{{url_for('static', filename='/icons/profile.svg')}}"
+        alt=""
+      />
+      <h2 class="capitalize folnt-bold">
+        {{ username }}
+      </h2>
+    </div>
+  </div>
+
+  <!-- users recipes -->
+  <div class="pt-16 overflow-x-scroll ">
+    <div
+      class="flex items-center px-4 py-4 space-x-4 text-white w-max justify-evenly"
+    >
+      <h2>Your recipes</h2>
+      <h2>Create recipes</h2>
+      <h2>Edit your recipes</h2>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
