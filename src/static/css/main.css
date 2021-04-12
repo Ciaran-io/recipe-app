@@ -1,0 +1,139 @@
+/* ./your-css-folder/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* =================
+mobile menu
+================= */
+
+/* mobile menu height */
+.mobile-menu-expand {
+  transition: 1.5s cubic-bezier(1, 0, 0, 1);
+  height: 400px;
+  @apply bg-gray-900;
+}
+/* mobile nav links */
+nav li  {
+  @apply 
+  mx-3
+  pb-2
+   border-b-2
+   border-white
+   border-double
+   w-11/12;
+}
+/* desktop nav links */
+#desktop-nav li {
+  position: relative;
+}
+
+#desktop-nav li:hover {
+  color: #3b82f6;
+}
+
+/* transition effects on hover */
+#desktop-nav li::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  background-color: #3b82f6;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+ /* transition effects on hover  */
+#desktop-nav li:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+/* #desktop-nav:last-child a::before {
+  height: 0px;
+} */
+/* =================
+home page
+================= */
+
+/* recipes cards  */
+
+.card-recipe {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+@screen sm {
+.card-recipe {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+}
+
+.card-recipe__height {
+  height: 450px;
+}
+
+/* =================
+recipe page
+================= */
+
+/* recipes menu */
+.menu-button-active {
+  @apply bg-blue-500 p-1 rounded-md text-white;
+}
+
+/* accordion list  */
+.accordion-recipe-list-expand {
+  @apply 
+  mb-4
+  transition-all duration-1000 ease-in-out
+  p-3
+  h-full
+  md:p-7
+}
+
+/* accordion icon */
+.accordion-icon-active {
+  @apply transform 
+text-blue-500
+  rotate-180;
+}
+/* =================
+user recipes page
+================= */
+
+/* recipe cards */
+.recipe-container-expand {
+  transition: 0.8s cubic-bezier(.45,.05,.55,.95);
+  padding-bottom: 70px;
+  height: 100%;
+}
+
+/* recipe cards first div */
+.recipe-container-space {
+margin-bottom: 70px;
+}
+
+/* recipe card shadow */
+.remove-height {
+  height: 0px !important;
+}
+
+/* =================
+login / register page
+================= */
+
+/* Hide labels form text not visually not needed */
+/* .visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+} */
