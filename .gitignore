@@ -1,4 +1,5 @@
 env.py
 __pycache__/
 /venv
-.vsocde
+/.vsocde
+/node_modules
