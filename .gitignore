@@ -1,5 +1,4 @@
 env.py
 __pycache__/
 /venv
-/.vsocode
 /node_modules
