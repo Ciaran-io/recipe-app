@@ -1,8 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
-
 <!-- main contnent -->
-<main class="container mx-auto ">
+<main class="container mx-auto mb-8">
   <!-- hero image -->
   <div class="h-full mb-10">
     <picture>
@@ -18,9 +17,7 @@
       />
     </picture>
   </div>
-  <h1 class="pl-4 text-3xl text-center text-gray-500">
-    Your Recipes
-  </h1>
+  <h1 class="pl-4 text-3xl text-center text-gray-500">Your Recipes</h1>
   <!-- recipe container -->
   <div
     id="user-recipe-container"
@@ -28,84 +25,77 @@
   >
     <!-- recipe list -->
     {% for recipe in recipe %}
-    {% if session.user|lower == recipe.created_by|lower or session.user|lower ==
-    recipe.edited_by|lower %}
+     {% if session.user|lower ==
+    recipe.created_by|lower or session.user|lower == recipe.edited_by|lower %}
     <div class="p-5 transform rounded-md rotate-2 bg-primary-teal">
       <ul
-        id="user-recipe-card"
         class="grid gap-8 px-4 py-4 overflow-hidden text-gray-500 transform bg-white rounded-md shadow-md -rotate-2 grid-col h-96"
       >
         <!-- recipe name -->
         <li>
-          <h2 class="mb-4 text-gray-600 ">
-            Recipe
-          </h2>
-          <p class="pb-2 ">{{ recipe.recipe_name }}</p>
-          <hr class="h-1 border-t-0 bg-primary-teal ">
+          <h2 class="mb-4 text-gray-900 ">Recipe</h2>
+          <p class="pb-2">{{ recipe.recipe_name }}</p>
+          <hr class="h-1 border-t-0 bg-primary-teal" />
         </li>
 
         <!-- recipe Description -->
         <li>
-          <h2 class="mb-4 text-gray-500 ">Description</h2>
-          <p class="pb-2 ">{{ recipe.recipe_description }}</p>
-          <hr class="h-1 border-t-0 bg-primary-teal ">
+          <h2 class="mb-4 text-gray-900">Description</h2>
+          <p class="pb-2">{{ recipe.recipe_description }}</p>
+          <hr class="h-1 border-t-0 bg-primary-teal" />
         </li>
 
         <!-- recipe ingredients -->
         <li>
-          <h2 class="mb-4 text-gray-500 ">Ingredients</h2>
-          <p class="pb-2 ">
-            {{ recipe.recipe_ingredients }}
-          </p>
-          <hr class="h-1 border-t-0 bg-primary-teal ">
+          <h2 class="mb-4 text-gray-900">Ingredients</h2>
+          <p class="pb-2">{{ recipe.recipe_ingredients }}</p>
+          <hr class="h-1 border-t-0 bg-primary-teal" />
         </li>
 
         <!-- recipe Instructions -->
         <li>
-          <h2 class="mb-4 text-gray-500 ">Instructions</h2>
-          </p>{{ recipe.recipe_cooking_instructions }}</p>
-          <hr class="h-1 border-t-0 bg-primary-teal">
+          <h2 class="mb-4 text-gray-900">Instructions</h2>
+          <p>{{ recipe.recipe_cooking_instructions }}</p>
+          <hr class="h-1 border-t-0 bg-primary-teal" />
         </li>
 
         <!-- fade effect on card -->
         <div
           id="fade-section"
-          class="absolute w-full place-self-end h-1/3 bg-gradient-to-b from-transparent via-gray-200 to-gray-300 "
-        >
-        </div>
+          class="absolute w-full place-self-end h-1/3 bg-gradient-to-b from-transparent via-gray-200 to-gray-300"
+        ></div>
 
         <!-- expand text button -->
         <button
           id="button-expand-text"
-          class="absolute w-auto m-4 justify-self-end place-self-end "
+          class="absolute w-auto m-4 justify-self-end place-self-end"
           type="button"
         >
           <img
-            id='expand-text-img'
+            id="expand-text-img"
             class="w-auto h-6 border-2 border-blue-500 rounded-md"
             src="{{ url_for('static', filename = 'icons/expand-button.svg') }}"
             alt=""
-          >
+          />
           <img
-            id='expand-text-close'
-            class="hidden w-auto h-8 rounded-md "
+            id="expand-text-close"
+            class="hidden w-auto h-8 rounded-md"
             src="{{ url_for('static',filename='icons/menu-icon-closed.svg')}}"
             alt=""
-          >
+          />
         </button>
       </ul>
       <!-- recipe edit / delete buttons -->
       <div
-        class="mt-8 ml-4 text-sm text-center text-gray-900 transform-gpu -rotate-2 "
+        class="mt-8 ml-4 text-sm text-center text-gray-900 transform-gpu -rotate-2"
       >
         <!-- edit recipe button -->
         <div class="grid grid-cols-2 gap-x-6">
           <div>
             <a href="{{ url_for('edit_recipe', recipe_id=recipe._id)}}">
               <button
-                type="sumblit"
-                id="user-recipe-card-edit-button"
                 class="w-full py-4 bg-white rounded-md shadow-3xl"
+                type="sumbmit"
               >
                 Edit
               </button>
@@ -114,69 +104,65 @@
 
           <!-- delete recipe button -->
           <div>
-              <button
-                type="button"
-                id="user-recipe-card-delete-button"
-                class="w-full py-4 text-red-700 bg-white rounded-md shadow-3xl"
-              >
-                Delete
-              </button>
+            <button
+              type="button"
+              id="button-delete-recipe"
+              class="w-full py-4 text-red-700 bg-white rounded-md shadow-3xl"
+            >
+              Delete
+            </button>
           </div>
         </div>
 
         <!-- delete recipe confirmation buttons -->
         <div id="recipe-delete-container" class="hidden">
-          <div class="my-4"> 
-            <h2 class="text-lg">Are you sure you want to delete this recipe?
+          <div class="my-4">
+            <h2 class="text-lg">
+              Are you sure you want to delete this recipe?
             </h2>
           </div>
 
-          <!-- confirm deletion -->
-          <div class="py-4 mb-4 bg-gray-700 rounded-md shadow-3xl">
+          <!-- confirm deletion button -->
+          <div class="mb-4 bg-gray-700 rounded-md shadow-3xl">
             <a href="{{ url_for('delete_recipe', recipe_id=recipe._id)}}">
-              <div class="grid grid-flow-col ">
+              <div class="flex">
                 <button
-                  class="text-lg text-red-700 place-self-end"
+                  class="w-full py-4 text-lg text-red-700"
                   type="submit"
                 >
                   Delete Recipe
                 </button>
                 <img
-                  class="w-6 h-auto mr-4 place-self-end "
+                  class="w-6 h-auto mr-4 "
                   src="{{ url_for('static',filename='icons/confirm-icon.svg')}}"
                   alt=""
-                >
+                />
               </div>
             </a>
           </div>
 
-          <!-- cancel deletion -->
-          <div class="py-4 bg-gray-300 rounded-md shadow-3xl">
-            <a href="{{ url_for('delete_recipe', recipe_id=recipe._id)}}">
-              <div class="grid grid-flow-col ">
-                <button
-                  class="text-lg text-gray-700 place-self-end"
-                  type="button"
-                >
-                  Changed Mind
-                </button>
-                <img
-                  class="w-6 h-auto mr-4 place-self-end"
-                  src="{{ url_for('static',filename='icons/cancel-icon.svg')}}"
-                  alt=""
-                >
-              </div>
-            </a>
+          <!-- cancel  button -->
+          <div class="bg-gray-300 rounded-md shadow-3xl">
+            <div class="flex">
+              <button
+                id="button-cancel-delete"
+                class="w-full py-4 text-lg text-gray-700 hover:text-blue-500"
+                type="button"
+              >
+                Changed Mind
+              </button>
+              <img
+                class="w-6 h-auto mr-4"
+                src="{{ url_for('static',filename='icons/cancel-icon.svg')}}"
+                alt=""
+              />
+            </div>
           </div>
-
         </div>
-
       </div>
     </div>
-    {% endif %}
-    {% endfor %}
+    {% endif %} {% endfor %}
   </div>
-
 </main>
 
 {% endblock %}

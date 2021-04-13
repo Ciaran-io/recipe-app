@@ -1,22 +1,23 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="container mx-auto">
+<div class="container mx-auto mb-28">
+  <!-- hero image -->
   <div>
     <picture>
       <source
-        srcset=" {{ url_for('static',
-    filename='./images/hero-recipe-page-lg.jpg') }}"
+        srcset=" {{ url_for('static',filename='./images/hero-recipe-page-lg.jpg') }}"
         media="(min-width: 640px)"
       />
 
       <img
         class="md:rounded-lg"
         src="{{ url_for('static', filename='./images/hero-recipe-page-sm.jpg') }}"
-        alt=""
+        alt="image of recipe book on counter kitchen counter top"
       />
     </picture>
   </div>
 
+  <!-- main content -->
   <main class="px-3">
     <!-- recipe menu container -->
     <div
@@ -24,22 +25,14 @@
     >
       <!-- recipe menu heading -->
       <div class="place-self-start mr-7 md:mr-4 min-w-max">
-        <h1 class="text-gray-500 md:text-xl">
-          Recipes chosen for you
-        </h1>
+        <h1 class="text-gray-500 md:text-xl">Recipes chosen for you</h1>
       </div>
       <!--  recipe menu  -->
       <div class="text-gray-600">
         <!--  recipe menu  list-->
-        <ul
-          id="users-recipe-menu"
-          class="grid grid-flow-col gap-6"
-        >
+        <ul id="recipe-menu" class="grid grid-flow-col gap-6">
           <li>
-            <button
-              id="button-menu-breakfast"
-              class="menu-button-active"
-            >
+            <button id="button-menu-breakfast" class="menu-button-active">
               <h2>Breakfast</h2>
             </button>
           </li>
@@ -75,11 +68,9 @@
             class="flex items-center justify-between"
           >
             <!-- accordion recipe heading -->
-            <h1 class="font-light">
-              {{ breakfast_recipe.name }}
-            </h1>
+            <h1 class="font-light">{{ breakfast_recipe.name }}</h1>
             <!-- accordion button -->
-            <button
+            <button aria-label="button for displaying hidden text"
               id="button-accordion-dropdown"
               class="transition duration-500 ease-in-out"
             >
@@ -98,17 +89,17 @@
             </button>
           </div>
           <!-- accordion inner container -->
-          <div class="grid ">
+          <div class="grid">
             <div
               id="recipe-data"
-              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md md:grid-cols-2 "
+              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md md:grid-cols-2"
             >
               <!-- recipe image -->
               <div class="h-96">
                 <img
                   class="object-contain w-auto h-full rounded-md"
                   src="{{ breakfast_recipe.image_source }}"
-                  alt=""
+                  alt="image of breakfast recipes"
                 />
               </div>
 
@@ -131,13 +122,14 @@
                 >
                   Instructions
                 </h2>
-                <p class="text-sm leading-6">{{ breakfast_recipe.instructions
-                  }}
+                <p class="text-sm leading-6">
+                  {{ breakfast_recipe.instructions }}
                 </p>
               </div>
             </div>
           </div>
         </li>
+
         {% endfor%}
       </ul>
     </div>
@@ -181,17 +173,17 @@
           </div>
 
           <!-- accordion inner container -->
-          <div class="grid ">
+          <div class="grid">
             <div
               id="recipe-data"
-              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md md:grid-cols-2 "
+              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md md:grid-cols-2"
             >
               <!-- recipe image -->
               <div class="h-96">
                 <img
                   class="object-contain w-auto h-full rounded-md"
                   src="{{ lunch_recipe.image_source }}"
-                  alt=""
+                  alt="image of lunch recipes"
                 />
               </div>
               <!-- recipe ingredients -->
@@ -201,9 +193,7 @@
                 >
                   Ingredients
                 </h2>
-                <p class="text-sm leading-6">{{ lunch_recipe.ingredients
-                  }}
-                </p>
+                <p class="text-sm leading-6">{{ lunch_recipe.ingredients }}</p>
               </div>
               <!-- recipe instructions -->
               <div class="md:col-span-2">
@@ -212,11 +202,8 @@
                 >
                   Instructions
                 </h2>
-                <p class="text-sm leading-6">{{ lunch_recipe.instructions
-                  }}
-                </p>
+                <p class="text-sm leading-6">{{ lunch_recipe.instructions }}</p>
               </div>
-
             </div>
           </div>
         </li>
@@ -262,17 +249,17 @@
             </button>
           </div>
           <!-- accordion inner container -->
-          <div class="grid ">
+          <div class="grid">
             <div
               id="recipe-data"
-              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md md:grid-cols-2 "
+              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md md:grid-cols-2"
             >
               <!-- recipe image -->
               <div class="h-96">
                 <img
                   class="object-contain w-auto h-full rounded-md"
                   src="{{ snacks_recipe.image_source }}"
-                  alt=""
+                  alt="image of snacks recipes"
                 />
               </div>
               <!-- recipe ingredients -->
@@ -282,19 +269,17 @@
                 >
                   Ingredients
                 </h2>
-                <p class="text-sm leading-6">{{ snacks_recipe.ingredients
-                  }}
-                </p>
+                <p class="text-sm leading-6">{{ snacks_recipe.ingredients }}</p>
               </div>
               <!-- recipe instructions -->
-              <div class=" md:col-span-2">
+              <div class="md:col-span-2">
                 <h2
                   class="inline-block pb-2 mb-3 text-blue-500 border-b-2 border-blue-500"
                 >
                   Instructions
                 </h2>
-                <p class="text-sm leading-6">{{ snacks_recipe.instructions
-                  }}
+                <p class="text-sm leading-6">
+                  {{ snacks_recipe.instructions }}
                 </p>
               </div>
             </div>
@@ -305,6 +290,5 @@
     </div>
   </main>
 </div>
-
 
 {% endblock %}

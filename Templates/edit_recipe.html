@@ -1,9 +1,6 @@
 {% extends "base.html" %} {% block content %}
 
-
-
-<div class="container mx-auto ">
-
+<div class="container mx-auto mb-12">
   <!-- hero image -->
   <div class="h-full mb-10">
     <picture>
@@ -29,19 +26,15 @@
     <!-- recipe container -->
     <div class="max-w-screen-lg mx-auto">
       <div class="w-full text-gray-900">
-
         <!-- recipe form -->
         <form
           method="POST"
           action="{{ url_for('edit_recipe', recipe_id=recipe._id)}}"
           class="px-6 pt-4 bg-white rounded-md"
         >
-
           <!-- recipe name input -->
           <label for="recipe_name">
-            <h2 class="text-base text-primary-teal">
-              Recipe name *
-            </h2>
+            <h2 class="text-base text-primary-teal">Recipe name *</h2>
           </label>
           <input
             type="text"
@@ -52,13 +45,11 @@
             maxlength="75"
             pattern="^[a-zA-Z0-9\s,_.()]{3,}$"
             required
-          >
+          />
 
           <!-- recipe description input -->
           <label for="recipe_description">
-            <h2 class="text-base text-primary-teal">
-              Recipe description
-            </h2>
+            <h2 class="text-base text-primary-teal">Recipe description</h2>
           </label>
           <textarea
             id="recipe_description"
@@ -68,14 +59,13 @@
             rows="5"
             minlength="5"
             maxlength="200"
-          >{{ recipe.recipe_description }}
+          >
+          {{ recipe.recipe_description }}
           </textarea>
 
           <!-- recipe ingredients input-->
           <label for="recipe_ingredients">
-            <h2 class="text-base text-primary-teal">
-              Recipe Ingredients *
-            </h2>
+            <h2 class="text-base text-primary-teal">Recipe Ingredients *</h2>
           </label>
           <textarea
             id="recipe_ingredients"
@@ -85,13 +75,16 @@
             rows="5"
             minlength="5"
             maxlength="500"
-            required>{{ recipe.recipe_ingredients }}
+            required
+          >
+          {{ recipe.recipe_ingredients }}
           </textarea>
 
           <!-- recipe cooking instructions input -->
           <label for="recipe_cooking_instructions">
             <h2 class="text-base text-primary-teal">
-              Recipe cooking instructions *</h2>
+              Recipe cooking instructions *
+            </h2>
           </label>
           <textarea
             id="recipe_cooking_instructions"
@@ -101,12 +94,15 @@
             rows="5"
             minlength="5"
             maxlength="500"
-            required>{{ recipe.recipe_cooking_instructions }}
+            required
+          >
+          {{ recipe.recipe_cooking_instructions }}
           </textarea>
 
           <!-- input for form -->
           <div
-            class="grid grid-flow-row gap-3 py-4 text-white md:grid-flow-col">
+            class="grid grid-flow-row gap-3 py-4 text-white md:grid-flow-col"
+          >
             <!-- save button -->
             <button
               type="submit"
@@ -129,5 +125,5 @@
       </div>
     </div>
   </main>
-
-  {% endblock %}
+</div>
+{% endblock %}
