@@ -53,14 +53,11 @@ nav li  {
   transform: scaleX(1);
 }
 
-/* #desktop-nav:last-child a::before {
-  height: 0px;
-} */
 /* =================
 home page
 ================= */
 
-/* recipes cards  */
+/* recipes cards */
 
 .card-recipe {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -109,7 +106,7 @@ user recipes page
 .recipe-container-expand {
   transition: 0.8s cubic-bezier(.45,.05,.55,.95);
   padding-bottom: 70px;
-  height: 100%;
+  height: min-content;
 }
 
 /* recipe cards first div */
@@ -127,7 +124,7 @@ login / register page
 ================= */
 
 /* Hide labels form text not visually not needed */
-/* .visually-hidden {
+.visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -136,4 +133,4 @@ login / register page
   padding: 0;
   position: absolute;
   width: 1px;
-} */
+}
