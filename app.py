@@ -23,6 +23,7 @@ def base():
 
 
 @app.route("/")
+@app.route("/index")
 def index():
     breakfast_data = []
     with open("data/breakfast-recipe.json", "r") as json_data:
@@ -164,8 +165,6 @@ def edit_recipe(recipe_id):
     return render_template("edit_recipe.html", recipe=recipe)
 
 # delete recipe from database
-
-
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
@@ -173,8 +172,6 @@ def delete_recipe(recipe_id):
     return redirect(url_for("my_recipes"))
 
 # display user recipes from mongodb
-
-
 @app.route("/my_recipes")
 def my_recipes():
     recipe = mongo.db.recipes.find()
