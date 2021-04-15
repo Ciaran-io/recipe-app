@@ -1,0 +1,75 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container mx-auto mb-5">
+  <!-- profile container -->
+  <div class="mb-10 bg-primary-teal">
+    <div class="flex items-center justify-between">
+      <!-- section for user login message -->
+      {% with messages= get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div>
+        <h1 class="capitalize">{{ message }}</h1>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+      <!-- profile placeholder image -->
+      <div class="flex flex-col content-center text-center">
+        <img
+          class="w-16 h-auto rounded-full"
+          src="{{url_for('static', filename='/icons/profile.svg')}}"
+          alt="placeholder image for user"
+        />
+        <h2 class="capitalize folnt-bold">{{ username }}</h2>
+      </div>
+    </div>
+
+    <!-- users recipes -->
+    <div class="pt-16 overflow-x-auto">
+      <ul class="flex items-center pb-4 pl-2 space-x-4 text-white w-max">
+        <li class="pb-1 border-b-2 border-transparent hover:border-blue-500">
+          <a href="{{ url_for('my_recipes') }}">Your recipes</a>
+        </li>
+        <li class="pb-1 border-b-2 border-transparent hover:border-blue-500">
+          <a href="{{ url_for('create_recipes') }}">Create a recipe</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <div
+      class="grid grid-flow-row px-2 gap-y-12 md:grid-flow-col md:gap-x-3 place-content-center"
+    >
+      <div class="flex flex-col justify-between">
+        <h2 class="pb-3 text-xl text-blue-500 md:text-lg d">
+          Receive new recipes each month
+        </h2>
+        <img
+          class="rounded-md"
+          src="{{ url_for('static', filename ='/images/recipe-3-user-page.jpg') }}"
+          alt="image of food"
+        />
+      </div>
+
+      <div class="flex flex-col justify-between">
+        <h2 class="pb-3 text-xl text-blue-500 md:text-lg">
+          Creat your own recipes
+        </h2>
+        <img
+          class="rounded-md"
+          src="{{ url_for('static', filename ='/images/recipe-2-user-page.jpg') }}"
+          alt="image of recipe book"
+        />
+      </div>
+      
+      <div class="flex flex-col justify-between">
+        <h2 class="pb-3 text-xl text-blue-500 md:text-lg">Get inspired</h2>
+        <img
+          class="rounded-md"
+          src="{{ url_for('static', filename ='/images/recipe-1-user-page.jpg') }}"
+          alt="image of food"
+        />
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %} {% block content %}
+<div class="container mx-auto">
+  <!-- hero image container -->
+  <div class="relative grid mb-10 lg:mb-24 md:grid-cols-2 place-content-center">
+    <!-- hero text -->
+    <div
+      class="absolute self-center w-1/2 mr-2 md:mr-0 md:pr-8 md:w-full place-self-end md:relative"
+    >
+      <h1
+        class="mb-2 text-xl text-blue-500 capitalize md:mb-4 sm:text-4xl lg:text-7xl font-hero_font"
+      >
+        food recipes
+      </h1>
+      <h2 class="text-xs text-gray-500 sm:text-xl">
+        Browse the wide range of recipes and find your favourite meal.
+      </h2>
+    </div>
+
+    <!-- hero image -->
+    <div>
+      <picture>
+        <source
+          srcset=" {{ url_for('static',filename='./images/hero-homepage-lg.jpg') }}"
+          media="(min-width: 640px)"
+        />
+        <img
+          class="w-full h-auto md:rounded-lg"
+          src="{{ url_for('static', filename='./images/hero-homepage-sm.jpg') }}"
+          alt=""
+        />
+      </picture>
+    </div>
+  </div>
+
+  <!-- main content -->
+  <main class="px-3 m:px-0">
+    <section class="mb-24">
+      <!-- recipe heading text -->
+      <div class="mb-4">
+        <h1 class="text-2xl text-blue-700 md:text-4xl">Recipes made for you</h1>
+      </div>
+
+      <!-- recipe cards -->
+      <div class="grid text-center gap-x-4 gap-y-6 md:gap-12 card-recipe">
+        {% for breakfast_recipe in breakfast_recipe %}
+        <div
+          class="flex flex-col items-center justify-between pb-3 bg-gray-200 shadow-3xl rounded-xl card-recipe__height"
+        >
+          <div class="w-full h-1/2">
+            <img
+              class="object-cover w-full h-full rounded-t-md"
+              src=" {{ breakfast_recipe.image_source }}"
+              alt=""
+            />
+          </div>
+
+          <div class="flex flex-col justify-around px-2 h-2/5">
+            <h1 class="text-base md:text-lg">{{ breakfast_recipe.name }}</h1>
+            <p class="text-sm md:text-base">
+              Delicious brekfast recipes made easy
+            </p>
+          </div>
+          <a class="w-10/12 p-2 text-white bg-gray-700 rounded-md hover:text-blue-500" href="{{ url_for('recipes') }}">
+            <button class="">
+              View recipe
+            </button>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section
+      class="relative flex mb-20 bg-gray-200 rounded-md h-80 md:pl-5 md:pb-20 md:pt-10"
+    >
+      <div
+        class="absolute grid w-full grid-cols-1 p-6 text-2xl text-center text-white bg-gray-900 rounded-md md:h-64 gap-y-12 md:grid-cols-3 place-items-center font-hero_font shadow-3xl"
+      >
+        <div class="flex flex-col space-y-4">
+          <img
+            class="w-auto h-8"
+            src="{{ url_for('static', filename = 'icons/heart-icon.svg') }}"
+            alt=""
+          />
+          <h2 class="text-base">Create your favourite recipes</h2>
+        </div>
+
+        <div class="flex flex-col space-y-4">
+          <img
+            class="w-auto h-8"
+            src="{{ url_for('static', filename = 'icons/edit-icon.svg') }}"
+            alt=""
+          />
+          <h2 class="text-sm">Make changes to your reipes</h2>
+        </div>
+
+        <div class="flex flex-col space-y-4">
+          <img
+            class="w-auto h-8"
+            src="{{ url_for('static', filename = 'icons/share-icon.svg') }}"
+            alt=""
+          />
+          <h2 class="text-sm">Share your recipes</h2>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+{% endblock %}
+
+<h1>class=""></h1>

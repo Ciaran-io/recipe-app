@@ -1,0 +1,97 @@
+{% extends "base.html" %} {% block content %}
+<!-- main contnent -->
+<main class="container mx-auto mt-4 mb-8">
+  <div class="max-w-screen-lg mx-auto">
+    <h1
+      class="pl-2 my-2 mb-4 text-base text-blue-500 md:text-2xl text-bold font-hero-font"
+    >
+      Create, change & save all your favourite recipes ...
+    </h1>
+    <div class="w-full text-gray-900">
+      <!-- recipe form -->
+      <form
+        method="POST"
+        action="{{ url_for('create_recipes') }}"
+        class="px-6 pt-4 bg-white rounded-md"
+      >
+        <!-- recipe name input -->
+        <label for="recipe_name">
+          <h2 class="text-base text-primary-teal">Recipe name *</h2>
+        </label>
+        <input
+          type="text"
+          id="recipe_name"
+          name="recipe_name"
+          class="w-full py-2 mb-3 border-b-2 focus:outline-none focus:border-blue-500"
+          placeholder="75 characters max"
+          maxlength="75"
+          pattern="^[a-zA-Z0-9\s,_.()]{3,}$"
+          required
+        />
+
+        <!-- recipe description input -->
+        <label for="recipe_description">
+          <h2 class="text-base text-primary-teal">Recipe description</h2>
+        </label>
+        <textarea
+          id="recipe_description"
+          name="recipe_description"
+          class="w-full p-2 my-4 bg-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+          cols="100"
+          rows="5"
+          minlength="5"
+          maxlength="200"
+        >
+      </textarea
+        >
+
+        <!-- recipe ingredients input-->
+        <label for="recipe_ingredients">
+          <h2 class="text-base text-primary-teal">Recipe Ingredients *</h2>
+        </label>
+        <textarea
+          id="recipe_ingredients"
+          name="recipe_ingredients"
+          class="w-full p-2 my-4 bg-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+          cols="100"
+          rows="5"
+          minlength="5"
+          maxlength="500"
+          required
+        >
+        </textarea>
+
+        <!-- recipe cooking instructions input -->
+        <label for="recipe_cooking_instructions">
+          <h2 class="text-base text-primary-teal">
+            Recipe cooking instructions *
+          </h2>
+        </label>
+        <textarea
+          id="recipe_cooking_instructions"
+          name="recipe_cooking_instructions"
+          class="w-full p-2 my-4 bg-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+          cols="100"
+          rows="5"
+          minlength="5"
+          maxlength="500"
+          required
+        >
+        </textarea>
+
+        <!-- input for form -->
+        <div class="flex justify-center py-4">
+          <!-- input button -->
+          <button
+            type="submit"
+            class="w-1/2 py-2 text-center text-white bg-blue-700 rounded-md shadow-lg"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
