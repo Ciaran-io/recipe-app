@@ -19,13 +19,13 @@ const buttonMenuLunch = document.getElementById('button-menu-lunch');
 // snacks menu buttom
 const buttonMenuSnacks = document.getElementById('button-menu-snacks');
 // accordion list
-const recipeDataDiv = document.querySelectorAll('#accordion-recipe-list');
+const recipeDataDiv = document.querySelectorAll('.accordion-recipe-list');
 // accordion icons
 const buttonAccordionDropdown = document.querySelectorAll(
-  '#button-accordion-dropdown'
+  '.button-accordion-dropdown'
 );
 //accordion inner container
-const recipeData = document.querySelectorAll('#recipe-data');
+const recipeData = document.querySelectorAll('.recipe-data');
 
 const breakfastContainer = document.getElementById('breakfast-container');
 const lunchContainer = document.getElementById('lunch-container');
@@ -41,9 +41,9 @@ const userRecipeContainerUl = document.querySelectorAll(
   '#user-recipe-container ul'
 );
 // recipe container first div element
-const fadeSectionDiv = document.querySelectorAll('#fade-section');
+const fadeSectionDiv = document.querySelectorAll('.fade-section');
 // expand text button
-const buttonExpandText = document.querySelectorAll('#button-expand-text');
+const buttonExpandText = document.querySelectorAll('.button-expand-text');
 // expand text image
 const buttonExpandImage = document.querySelectorAll('#expand-text-img');
 // close expand text image

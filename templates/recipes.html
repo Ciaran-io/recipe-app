@@ -30,20 +30,26 @@
       <!--  recipe menu  -->
       <div class="text-gray-600">
         <!--  recipe menu  list-->
-        <ul id="recipe-menu" class="grid grid-flow-col gap-6">
+        <ul
+          id="recipe-menu"
+          class="grid grid-flow-col gap-6"
+        >
           <li>
-            <button id="button-menu-breakfast" class="menu-button-active">
-              <h2>Breakfast</h2>
+            <button
+              id="button-menu-breakfast"
+              class="menu-button-active"
+            >
+              Breakfast
             </button>
           </li>
           <li>
             <button id="button-menu-lunch">
-              <h2>Lunch</h2>
+              Lunch
             </button>
           </li>
           <li>
             <button id="button-menu-snacks">
-              <h2>Snacks</h2>
+              Snacks
             </button>
           </li>
         </ul>
@@ -59,20 +65,17 @@
       <ul>
         {% for breakfast_recipe in breakfast_recipe %}
         <li
-          id="accordion-recipe-list"
-          class="mb-3 text-gray-600 rounded-md md:p-4 md:hover:bg-gray-100 md:text-lg"
+          class="mb-3 text-gray-600 rounded-md accordion-recipe-list md:p-4 md:hover:bg-gray-100 md:text-lg"
         >
           <!-- accordion heading container -->
           <div
-            id="accordion-recipe-heading"
             class="flex items-center justify-between"
           >
             <!-- accordion recipe heading -->
             <h1 class="font-light">{{ breakfast_recipe.name }}</h1>
             <!-- accordion button -->
             <button aria-label="button for displaying hidden text"
-              id="button-accordion-dropdown"
-              class="transition duration-500 ease-in-out"
+              class="transition duration-500 ease-in-out button-accordion-dropdown"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,8 +94,7 @@
           <!-- accordion inner container -->
           <div class="grid">
             <div
-              id="recipe-data"
-              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md md:grid-cols-2"
+              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md recipe-data md:grid-cols-2"
             >
               <!-- recipe image -->
               <div class="h-96">
@@ -142,20 +144,17 @@
       <ul>
         {% for lunch_recipe in lunch_recipe %}
         <li
-          id="accordion-recipe-list"
-          class="mb-3 text-gray-600 rounded-md md:p-4 md:hover:bg-gray-100 md:text-lg"
+          class="mb-3 text-gray-600 rounded-md accordion-recipe-list md:p-4 md:hover:bg-gray-100 md:text-lg"
         >
           <!-- accordion heading container -->
           <div
-            id="accordion-recipe-heading"
             class="flex items-center justify-between"
           >
             <!-- accordion recipe heading -->
             <h1 class="font-light">{{ lunch_recipe.name }}</h1>
             <!-- accordion button -->
             <button
-              id="button-accordion-dropdown"
-              class="transition duration-500 ease-in-out"
+              class="transition duration-500 ease-in-out button-accordion-dropdown"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -175,8 +174,7 @@
           <!-- accordion inner container -->
           <div class="grid">
             <div
-              id="recipe-data"
-              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md md:grid-cols-2"
+              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md recipe-data md:grid-cols-2"
             >
               <!-- recipe image -->
               <div class="h-96">
@@ -219,20 +217,17 @@
       <ul>
         {% for snacks_recipe in snacks_recipe %}
         <li
-          id="accordion-recipe-list"
-          class="mb-3 text-gray-600 rounded-md md:p-4 md:hover:bg-gray-100 md:text-lg"
+          class="mb-3 text-gray-600 rounded-md accordion-recipe-list md:p-4 md:hover:bg-gray-100 md:text-lg"
         >
           <!-- accordion heading container -->
           <div
-            id="accordion-recipe-heading"
             class="flex items-center justify-between"
           >
             <!-- accordion heading -->
             <h1 class="font-light">{{ snacks_recipe.name }}</h1>
             <!-- accordion button -->
             <button
-              id="button-accordion-dropdown"
-              class="transition duration-500 ease-in-out"
+              class="transition duration-500 ease-in-out button-accordion-dropdown"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -251,8 +246,7 @@
           <!-- accordion inner container -->
           <div class="grid">
             <div
-              id="recipe-data"
-              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md md:grid-cols-2"
+              class="grid h-0 gap-6 overflow-hidden text-white bg-gray-900 rounded-md shadow-md recipe-data md:grid-cols-2"
             >
               <!-- recipe image -->
               <div class="h-96">

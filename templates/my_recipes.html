@@ -24,8 +24,7 @@
     class="grid grid-flow-row px-2 mt-10 gap-x-8 gap-y-8 md:grid-cols-2 md:gap-y-10 lg:gap-y-12"
   >
     <!-- recipe list -->
-    {% for recipe in recipe %}
-     {% if session.user|lower ==
+    {% for recipe in recipe %} {% if session.user|lower ==
     recipe.created_by|lower or session.user|lower == recipe.edited_by|lower %}
     <div class="p-5 transform rounded-md rotate-2 bg-primary-teal">
       <ul
@@ -33,7 +32,7 @@
       >
         <!-- recipe name -->
         <li>
-          <h2 class="mb-4 text-gray-900 ">Recipe</h2>
+          <h2 class="mb-4 text-gray-900">Recipe</h2>
           <p class="pb-2">{{ recipe.recipe_name }}</p>
           <hr class="h-1 border-t-0 bg-primary-teal" />
         </li>
@@ -60,30 +59,30 @@
         </li>
 
         <!-- fade effect on card -->
-        <div
-          id="fade-section"
-          class="absolute w-full place-self-end h-1/3 bg-gradient-to-b from-transparent via-gray-200 to-gray-300"
-        ></div>
+        <li
+          class="absolute w-full fade-section place-self-end h-1/3 bg-gradient-to-b from-transparent via-gray-200 to-gray-300"
+        ></li>
 
         <!-- expand text button -->
-        <button
-          id="button-expand-text"
-          class="absolute w-auto m-4 justify-self-end place-self-end"
-          type="button"
-        >
-          <img
-            id="expand-text-img"
-            class="w-auto h-6 border-2 border-blue-500 rounded-md"
-            src="{{ url_for('static', filename = 'icons/expand-button.svg') }}"
-            alt=""
-          />
-          <img
-            id="expand-text-close"
-            class="hidden w-auto h-8 rounded-md"
-            src="{{ url_for('static',filename='icons/menu-icon-closed.svg')}}"
-            alt=""
-          />
-        </button>
+        <li class="absolute w-auto m-4 place-self-end">
+          <button
+            class="button-expand-text"
+            type="button"
+          >
+            <img
+              id="expand-text-img"
+              class="w-auto h-6 border-2 border-blue-500 rounded-md"
+              src="{{ url_for('static', filename = 'icons/expand-button.svg') }}"
+              alt=""
+            />
+            <img
+              id="expand-text-close"
+              class="hidden w-auto h-8 rounded-md"
+              src="{{ url_for('static',filename='icons/menu-icon-closed.svg')}}"
+              alt=""
+            />
+          </button>
+        </li>
       </ul>
       <!-- recipe edit / delete buttons -->
       <div
@@ -126,14 +125,11 @@
           <div class="mb-4 bg-gray-700 rounded-md shadow-3xl">
             <a href="{{ url_for('delete_recipe', recipe_id=recipe._id)}}">
               <div class="flex">
-                <button
-                  class="w-full py-4 text-lg text-red-700"
-                  type="submit"
-                >
+                <button class="w-full py-4 text-lg text-red-700" type="submit">
                   Delete Recipe
                 </button>
                 <img
-                  class="w-6 h-auto mr-4 "
+                  class="w-6 h-auto mr-4"
                   src="{{ url_for('static',filename='icons/confirm-icon.svg')}}"
                   alt=""
                 />
