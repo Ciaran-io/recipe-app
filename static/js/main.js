@@ -52,7 +52,7 @@ const buttonCloseExpandImage = document.querySelectorAll('#expand-text-close');
 // Delete button users recipe
 const buttonDeleteRecipe = document.querySelectorAll('#button-delete-recipe');
 // cancel button users recipe
-const buttonCancelDelete = document.querySelectorAll('#button-cancel-delete');
+const buttonCancelDelete = document.querySelectorAll('.button-cancel-delete');
 // confirm delete button users recipe
 const UserRecipeDeleteContainer = document.querySelectorAll(
   '#recipe-delete-container'
