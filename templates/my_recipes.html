@@ -120,9 +120,9 @@
           <div class="mb-4 bg-gray-700 rounded-md shadow-3xl">
             <a href="{{ url_for('delete_recipe', recipe_id=recipe._id)}}">
               <div class="flex">
-                <button class="w-full py-4 text-lg text-red-700" type="submit">
+                <span class="w-full py-4 text-lg text-red-700">
                   Delete Recipe
-                </button>
+                </span>
                 <img
                   class="w-6 h-auto mr-4"
                   src="{{ url_for('static',filename='icons/confirm-icon.svg')}}"
@@ -136,8 +136,7 @@
           <div class="bg-gray-300 rounded-md shadow-3xl">
             <div class="flex">
               <button
-                id="button-cancel-delete"
-                class="w-full py-4 text-lg text-gray-700 hover:text-blue-500"
+                class="w-full py-4 text-lg text-gray-700 button-cancel-delete hover:text-blue-500"
                 type="button"
               >
                 Changed Mind
