@@ -17,15 +17,12 @@
     />
     {% block styles %} {% endblock%}
     <title>Solo Chef - Recipes chosen for you</title>
+    <meta name="description" content="Range of food recipes" />
     <meta
-    name="description"
-    content="Range of food recipes"
-  />
-    <meta
-    name="keywords"
-    content="recipes, breakfast recipes, food recipes, quick recipes"
-  />
-  <meta name="author" content="Ciaran Toner" />
+      name="keywords"
+      content="recipes, breakfast recipes, food recipes, quick recipes"
+    />
+    <meta name="author" content="Ciaran Toner" />
   </head>
 
   <body class="flex flex-col w-screen min-h-screen bg-gray-100 font-primary">
@@ -90,12 +87,11 @@
           </li>
 
           <!-- sign out button -->
-          <a href="{{url_for ('logout')}}">
-            <button
-              class="w-full px-2 py-1 mx-auto text-white bg-blue-500 rounded-md"
-            >
-              Sign Out
-            </button>
+          <a
+            class="w-full px-2 py-1 mx-auto text-white bg-blue-500 rounded-md"
+            href="{{url_for ('logout')}}"
+          >
+            Sign Out
           </a>
 
           <!-- if user is not logged this menu will display -->
@@ -140,13 +136,12 @@
 
         <!-- navigation sign out button -->
         <div>
-          <a href="{{url_for ('logout')}}">
-            <button
-              class="w-full p-2 mx-auto text-white bg-gray-700 rounded-md m"
-            >
-              Sign Out
-            </button></a
+          <a
+            class="w-full p-2 mx-auto text-white bg-gray-700 rounded-md m"
+            href="{{url_for ('logout')}}"
           >
+            Sign Out
+          </a>
         </div>
 
         <!-- if no user is logged in this menu will display -->
@@ -163,19 +158,17 @@
         <div
           class="grid w-full grid-cols-1 gap-4 px-2 py-2 sm:grid-cols-2 sm:grid-flow-col"
         >
-          <a href="{{ url_for('login') }}">
-            <button
-              class="w-full p-2 text-white bg-gray-700 rounded-md shadow-xl"
-            >
-              Log in
-            </button>
+          <a
+            class="w-full p-2 text-white bg-gray-700 rounded-md shadow-xl"
+            href="{{ url_for('login') }}"
+          >
+            Log in
           </a>
-          <a href="{{ url_for('register') }}">
-            <button
-              class="w-full p-2 text-white bg-gray-700 rounded-md shadow-xl"
-            >
-              Create Account
-            </button>
+          <a
+            class="w-full p-2 text-white bg-gray-700 rounded-md shadow-xl"
+            href="{{ url_for('register') }}"
+          >
+            > Create Account
           </a>
         </div>
       </nav>
@@ -197,7 +190,9 @@
     {% block content %} {% endblock %}
 
     <!-- footer -->
-    <footer class="w-full px-2 mt-auto bg-white border-t-2 border-gray-900 h-96">
+    <footer
+      class="w-full px-2 mt-auto bg-white border-t-2 border-gray-900 h-96"
+    >
       <div
         class="container grid pt-12 mx-auto text-center gap-y-8 place-items-center max-w-max"
       >
@@ -235,22 +230,21 @@
         <!-- social media icons -->
         <div class="flex space-x-6">
           <img
-          class="h-auto w-7 sm:w-8"
-          src="{{ url_for('static', filename = 'icons/facebook-icon.svg') }}"
-          alt="facebook icon"
-        />
+            class="h-auto w-7 sm:w-8"
+            src="{{ url_for('static', filename = 'icons/facebook-icon.svg') }}"
+            alt="facebook icon"
+          />
           <img
-          class="h-auto w-7 sm:w-8"
-          src="{{ url_for('static', filename = 'icons/twitter-icon.svg') }}"
-          alt="twitter-icon"
-        />
+            class="h-auto w-7 sm:w-8"
+            src="{{ url_for('static', filename = 'icons/twitter-icon.svg') }}"
+            alt="twitter-icon"
+          />
           <img
-          class="h-auto w-7 sm:w-8"
-          src="{{ url_for('static', filename = 'icons/pinterest-icon.svg') }}"
-          alt="pinterest-icon"
-        />
+            class="h-auto w-7 sm:w-8"
+            src="{{ url_for('static', filename = 'icons/pinterest-icon.svg') }}"
+            alt="pinterest-icon"
+          />
         </div>
-
       </div>
     </footer>
 
