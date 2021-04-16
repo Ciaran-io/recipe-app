@@ -33,8 +33,11 @@
           class="px-6 pt-4 bg-white rounded-md"
         >
           <!-- recipe name input -->
-          <label for="recipe_name">
-            <h2 class="text-base text-primary-teal">Recipe name *</h2>
+          <label
+            for="recipe_name"
+            class="text-base text-primary-teal"
+          >
+            Recipe name *
           </label>
           <input
             type="text"
@@ -48,8 +51,11 @@
           />
 
           <!-- recipe description input -->
-          <label for="recipe_description">
-            <h2 class="text-base text-primary-teal">Recipe description</h2>
+          <label
+            for="recipe_description"
+            class="text-base text-primary-teal"
+          >
+            Recipe description
           </label>
           <textarea
             id="recipe_description"
@@ -64,8 +70,11 @@
           </textarea>
 
           <!-- recipe ingredients input-->
-          <label for="recipe_ingredients">
-            <h2 class="text-base text-primary-teal">Recipe Ingredients *</h2>
+          <label
+            for="recipe_ingredients"
+            class="text-base text-primary-teal"
+          >
+            Recipe Ingredients *
           </label>
           <textarea
             id="recipe_ingredients"
@@ -81,10 +90,11 @@
           </textarea>
 
           <!-- recipe cooking instructions input -->
-          <label for="recipe_cooking_instructions">
-            <h2 class="text-base text-primary-teal">
-              Recipe cooking instructions *
-            </h2>
+          <label
+            for="recipe_cooking_instructions"
+            class="text-base text-primary-teal"
+          >
+            Recipe cooking instructions *
           </label>
           <textarea
             id="recipe_cooking_instructions"
@@ -101,8 +111,7 @@
 
           <!-- input for form -->
           <div
-            class="grid grid-flow-row gap-3 py-4 text-white md:grid-flow-col"
-          >
+            class="grid grid-flow-row gap-3 py-4 text-white md:grid-flow-col">
             <!-- save button -->
             <button
               type="submit"
@@ -112,13 +121,11 @@
             </button>
 
             <!-- cancel button -->
-            <a href="{{ url_for('my_recipes') }}">
-              <button
-                type="button"
-                class="w-full py-2 text-center bg-red-400 rounded-md shadow-lg"
-              >
-                Cancel
-              </button>
+            <a
+              class="block py-2 text-center bg-red-400 rounded-md shadow-lg"
+              href="{{ url_for('my_recipes') }}"
+            >
+              Cancel
             </a>
           </div>
         </form>
