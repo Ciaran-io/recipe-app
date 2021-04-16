@@ -18,8 +18,6 @@ const buttonMenuBreakfast = document.getElementById('button-menu-breakfast');
 const buttonMenuLunch = document.getElementById('button-menu-lunch');
 // snacks menu buttom
 const buttonMenuSnacks = document.getElementById('button-menu-snacks');
-// accordion list
-const recipeDataDiv = document.querySelectorAll('.accordion-recipe-list');
 // accordion icons
 const buttonAccordionDropdown = document.querySelectorAll(
   '.button-accordion-dropdown'
