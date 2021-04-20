@@ -1,15 +1,22 @@
 import os
 from flask import (
-    Flask, flash, render_template,
-    redirect, request, session, url_for)
+    Flask,
+    flash,
+    render_template,
+    redirect,
+    request,
+    session,
+    url_for)
 import json
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+
 if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -38,7 +45,8 @@ def index():
 
         snacks_data = json.load(json_data)
 
-    return render_template("index.html", breakfast_recipe=breakfast_data, snacks_recipe=snacks_data, lunch_recipe=lunch_data)
+    return render_template("index.html", breakfast_recipe=breakfast_data,
+                           snacks_recipe=snacks_data, lunch_recipe=lunch_data)
 
 
 @app.route("/recipes")
@@ -55,7 +63,16 @@ def recipes():
     with open("data/snacks-recipe.json", "r") as json_data:
         snacks_data = json.load(json_data)
 
-    return render_template("recipes.html", breakfast_recipe=breakfast_data, snacks_recipe=snacks_data, lunch_recipe=lunch_data)
+    return render_template("recipes.html", breakfast_recipe=breakfast_data,
+                           snacks_recipe=snacks_data, lunch_recipe=lunch_data)
+
+# register user
+
+
+
+
+
+
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -81,6 +98,14 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
 
+#    login user
+
+
+
+
+
+
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -91,21 +116,35 @@ def login():
 
         if existing_user:
             # ensure hashed password matches user input
-            if check_password_hash(existing_user["password"], request.form.get("password")):
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
             else:
                 # invalid password hash
                 flash(
-                    "The username or password you have entered does not match our records. Please double-check and try again.")
+                    "The username or password you have entered\
+                     does not match our records.\
+                     Please double-check and try again.")
                 return redirect(url_for("login"))
         else:
             # username doesn't exist
-            flash("The username or password you have entered does not match our records. Please double-check and try again.")
+            flash(
+                "The username or password you have entered\
+                 does not match our records.\
+                 Please double-check and try again.")
             return redirect(url_for("login"))
 
     return render_template("login.html")
+
+#    profile page
+
+
+
+
+
+
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -136,7 +175,8 @@ def create_recipes():
             "recipe_name": request.form.get("recipe_name"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
-            "recipe_cooking_instructions": request.form.get("recipe_cooking_instructions"),
+            "recipe_cooking_instructions":
+            request.form.get("recipe_cooking_instructions"),
             "created_by": session["user"]
         }
         mongo.db.recipes.insert_one(recipe)
@@ -154,7 +194,8 @@ def edit_recipe(recipe_id):
             "recipe_name": request.form.get("recipe_name"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
-            "recipe_cooking_instructions": request.form.get("recipe_cooking_instructions"),
+            "recipe_cooking_instructions":
+            request.form.get("recipe_cooking_instructions"),
             "edited_by": session["user"]
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
@@ -165,11 +206,20 @@ def edit_recipe(recipe_id):
     return render_template("edit_recipe.html", recipe=recipe)
 
 # delete recipe from database
+
+
+
+
+
+
+
+
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
     flash("Your recipe has been removed")
     return redirect(url_for("my_recipes"))
+
 
 # display user recipes from mongodb
 @app.route("/my_recipes")
